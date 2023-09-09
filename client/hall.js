@@ -1,4 +1,3 @@
-console.log(localStorage)
 import fetchRequest from "./fetchRequest.js"
 
 document.querySelector(".buying__info-title").textContent =
@@ -18,25 +17,6 @@ const priceVip = Number(localStorage.getItem("hallPriceVip"))
 let rowsObject = {}
 let hallConfiguration = ""
 
-// Получение актуальной схемы посадочных мест (Стабильно возвращает null)
-// async function getConfig() {
-//   const response = await fetch("https://jscp-diplom.netoserver.ru/", {
-//     method: "POST",
-//     body: `event=get_hallConfig&timestamp=${localStorage.getItem(
-//       "timestamp"
-//     )}&hallId=${localStorage.getItem("hallId")}&seanceId=${localStorage.getItem(
-//       "seanceId"
-//     )}`,
-//     headers: {
-//       "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-//     },
-//   })
-
-//   return await response.json()
-// }
-
-// let config = getConfig()
-
 let config = fetchRequest(
   `event=get_hallConfig&timestamp=${localStorage.getItem(
     "timestamp"
@@ -44,7 +24,6 @@ let config = fetchRequest(
     "seanceId"
   )}`
 ).then((data) => {
-  console.log(data)
   if (data == null) {
     document.querySelector(".conf-step").insertAdjacentHTML(
       "afterbegin",
@@ -91,18 +70,6 @@ document.querySelector(".acceptin-button").addEventListener("click", () => {
       "seanceId"
     )}&hallConfiguration=${hallConfiguration}`
   )
-
-  //   fetch("https://jscp-diplom.netoserver.ru/", {
-  //     method: "POST",
-  //     body: `event=sale_add&timestamp=${localStorage.getItem(
-  //       "timestamp"
-  //     )}&hallId=${localStorage.getItem("hallId")}&seanceId=${localStorage.getItem(
-  //       "seanceId"
-  //     )}&hallConfiguration=${hallConfiguration}`,
-  //     headers: {
-  //       "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-  //     },
-  //   })
 })
 
 function getRowChair() {

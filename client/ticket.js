@@ -16,7 +16,5 @@ let qrCode = window.QRCreator(
   {image: "html"}
 )
 
-console.log(qrCode.text)
-
 document.querySelector(".ticket__info-qrCode").append(qrCode.result)
 document.querySelector(".qrcode").classList.add("ticket__info-qr")
