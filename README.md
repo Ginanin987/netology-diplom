@@ -1,5 +1,9 @@
 # netology-diplom
 
+[Ссылка на репозиторий](https://github.com/Ginanin987/netology-diplom)
+
+# Ссылка на задание
+
 [Ссылка на репозиторий задания](https://github.com/VladaIsakova/js-cp-diploma-edited/tree/main)
 
 # githubPages
