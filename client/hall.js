@@ -28,12 +28,24 @@ let config = fetchRequest(
     document.querySelector(".conf-step").insertAdjacentHTML(
       "afterbegin",
       `<div class="conf-step__wrapper"> 
-    ${localStorage.getItem("hallConfig")}
-  </div>
-  `
+        ${localStorage.getItem("hallConfig")}
+        </div>
+        `
     )
   } else {
-    document.querySelector(".conf-step").insertAdjacentHTML("afterbegin", data)
+    if (!data.includes(`<div class="conf-step__wrapper">`)) {
+      document.querySelector(".conf-step").insertAdjacentHTML(
+        "afterbegin",
+        `<div class="conf-step__wrapper"> 
+          ${data}
+        </div>
+        `
+      )
+    } else {
+      document
+        .querySelector(".conf-step")
+        .insertAdjacentHTML("afterbegin", data)
+    }
   }
 
   Array.from(
@@ -61,6 +73,7 @@ let config = fetchRequest(
 
 document.querySelector(".acceptin-button").addEventListener("click", () => {
   localStorage.selectedPlaces = getRowChair().join(", ")
+
   fetchRequest(
     `event=sale_add&timestamp=${localStorage.getItem(
       "timestamp"
